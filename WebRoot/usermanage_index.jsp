@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <h3>用户创建</h3>
-	<form action="usermanage!create" method="post">
+	<form action="user!create" method="post">
 		<p><label>用户名称：</label><input name="user.name" type="text"></p>
 		<p><input type="submit" value="提交"></p>
 	</form>    

@@ -17,10 +17,9 @@
 			value="com.mysql.jdbc.Driver">
 		</property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/asset">
+			value="jdbc:mysql://localhost:3306/fuda">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="aloha"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -38,7 +37,6 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>com/model/Nature.hbm.xml</value>
 				<value>com/model/Section.hbm.xml</value>
 				<value>com/model/User.hbm.xml</value>
 				<value>com/model/AssetType.hbm.xml</value>
