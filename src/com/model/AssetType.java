@@ -87,7 +87,16 @@ public class Assettype  implements java.io.Serializable {
     public void setAssetimfos(Set assetimfos) {
         this.assetimfos = assetimfos;
     }
-   
+
+
+/*	public static void main(String[] args) {
+		this.assettypecode = assettypecode;
+		        this.assettypename = assettypename;
+		        this.preassettypeid = preassettypeid;
+		        this.preassettypename = preassettypename;
+		        this.assetimfos = assetimfos;
+	}
+   */
 
 
 
