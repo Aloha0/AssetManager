@@ -39,9 +39,6 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>com/model/Section.hbm.xml</value>
-				<value>com/model/User.hbm.xml</value>
-				<value>com/model/Asset.hbm.xml</value>
 				<value>com/model/Assetrebackimfo.hbm.xml</value>
 				<value>com/model/Assetdeliverlist.hbm.xml</value>
 				<value>com/model/Assetdeliver.hbm.xml</value>
@@ -89,36 +86,16 @@
 	</aop:config>
 	
 	<!-- Dao -->
-	<bean id="sectionDao" class="com.dao.impl.SectionDao" >
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	
-	<bean id="usermanageDao" class="com.dao.impl.UserManageDao" >
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
+
 	
 	
 	<!-- Service -->
-	<bean id="sectionService" class="com.service.impl.SectionService" autowire="byName">
-		<property name="sectionDao" ref="sectionDao"></property>
-		
-	</bean>
-	
-	<bean id="usermanageService" class="com.service.impl.UserManageService" autowire="byName">
-		<property name="usermanageDao" ref="usermanageDao"></property>
-		
-	</bean>
+
 	
 
 	
 	<!-- Action -->
-	<bean id="sectionAction" class="com.action.SectionAction" autowire="byName">
-		<property name="sectionService" ref="sectionService"></property>
-	</bean>
-	
-	<bean id="usermanageAction" class="com.action.UserManageAction" autowire="byName">
-		<property name="usermanageService" ref="usermanageService"></property>
-	</bean>
+
 	
 
 	
