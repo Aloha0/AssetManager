@@ -98,7 +98,17 @@ public class Assetimfo  implements java.io.Serializable {
     }
 
 
-    public Userimfo getUserimfoByUserid() {
+    public AssetType getAssettype() {
+		return assettype;
+	}
+
+
+	public void setAssettype(AssetType assettype) {
+		this.assettype = assettype;
+	}
+
+
+	public Userimfo getUserimfoByUserid() {
         return this.userimfoByUserid;
     }
     
