@@ -12,36 +12,36 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.dao.IAssetTypeDao;
-import com.model.AssetType;
+import com.model.Assettype;
 import com.model.User;
 
-public class AssetTypeDao extends HibernateDaoSupport implements IAssetTypeDao {
+public class AssettypeDao extends HibernateDaoSupport implements IAssetTypeDao {
 
 	@Override
-	public void create(AssetType assettype) {
+	public void create(Assettype Assettype) {
 		// TODO Auto-generated method stub
-		super.getHibernateTemplate().save(assettype);
+		super.getHibernateTemplate().save(Assettype);
 
 	}
 
 	@Override
-	public void update(AssetType assettype) {
+	public void update(Assettype Assettype) {
 		// TODO Auto-generated method stub
-		super.getHibernateTemplate().saveOrUpdate(assettype);
+		super.getHibernateTemplate().saveOrUpdate(Assettype);
 
 	}
 
 	@Override
-	public void remove(AssetType assettype) {
+	public void remove(Assettype Assettype) {
 		// TODO Auto-generated method stub
-		super.getHibernateTemplate().delete(assettype);
+		super.getHibernateTemplate().delete(Assettype);
 
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<AssetType> findAssetType(final String assettypeID){
-		return (List<AssetType>) super.getHibernateTemplate().execute(
+	public List<Assettype> findAssetType(final String AssettypeID){
+		return (List<Assettype>) super.getHibernateTemplate().execute(
 				new HibernateCallback<Object>() {
 					@Override
 					public Object doInHibernate(Session session)
@@ -49,7 +49,7 @@ public class AssetTypeDao extends HibernateDaoSupport implements IAssetTypeDao {
 						List<User> list = new ArrayList<User>();
 						try {
 							Criteria criteria = session.createCriteria(User.class);
-							list = (List<User>)criteria.add(Restrictions.eq("user", assettypeID)).list();
+							list = (List<User>)criteria.add(Restrictions.eq("user", AssettypeID)).list();
 							return list;
 						} catch (Exception e) {
 							e.printStackTrace();
