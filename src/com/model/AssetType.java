@@ -8,7 +8,7 @@ import java.util.Set;
  * Assettype entity. @author MyEclipse Persistence Tools
  */
 
-public class Assettype  implements java.io.Serializable {
+public class AssetType  implements java.io.Serializable {
 
 
     // Fields    
@@ -24,12 +24,12 @@ public class Assettype  implements java.io.Serializable {
     // Constructors
 
     /** default constructor */
-    public Assettype() {
+    public AssetType() {
     }
 
     
     /** full constructor */
-    public Assettype(String assettypecode, String assettypename, Integer preassettypeid, String preassettypename, Set assetimfos) {
+    public AssetType(String assettypecode, String assettypename, Integer preassettypeid, String preassettypename, Set assetimfos) {
         this.assettypecode = assettypecode;
         this.assettypename = assettypename;
         this.preassettypeid = preassettypeid;

@@ -15,7 +15,7 @@ public class Assetimfo  implements java.io.Serializable {
     // Fields    
 
      private Integer assetid;
-     private Assettype assettype;
+     private AssetType assettype;
      private Userimfo userimfoByUserid;
      private Userimfo userimfoByAccounterid;
      private Checkdetail checkdetail;
@@ -54,7 +54,7 @@ public class Assetimfo  implements java.io.Serializable {
 
     
     /** full constructor */
-    public Assetimfo(Assettype assettype, Userimfo userimfoByUserid, Userimfo userimfoByAccounterid, Checkdetail checkdetail, Depimfo depimfo, Integer keeperid, String cardid, Integer stockstate, Integer isaccouted, String size, Integer usestate, String assetname, Date accountingdate, String accountcode, String assetcode, Date basetime, String uinit, Integer number, String note, Float price, Integer isprint, String maker, String supplier, Set assetrebackimfos, Set abolishimfos, Set checkdetails, Set assetdeliverlists, Set allocaimfos, Set assetrepairimfos) {
+    public Assetimfo(AssetType assettype, Userimfo userimfoByUserid, Userimfo userimfoByAccounterid, Checkdetail checkdetail, Depimfo depimfo, Integer keeperid, String cardid, Integer stockstate, Integer isaccouted, String size, Integer usestate, String assetname, Date accountingdate, String accountcode, String assetcode, Date basetime, String uinit, Integer number, String note, Float price, Integer isprint, String maker, String supplier, Set assetrebackimfos, Set abolishimfos, Set checkdetails, Set assetdeliverlists, Set allocaimfos, Set assetrepairimfos) {
         this.assettype = assettype;
         this.userimfoByUserid = userimfoByUserid;
         this.userimfoByAccounterid = userimfoByAccounterid;
@@ -97,13 +97,6 @@ public class Assetimfo  implements java.io.Serializable {
         this.assetid = assetid;
     }
 
-    public Assettype getAssettype() {
-        return this.assettype;
-    }
-    
-    public void setAssettype(Assettype assettype) {
-        this.assettype = assettype;
-    }
 
     public Userimfo getUserimfoByUserid() {
         return this.userimfoByUserid;
