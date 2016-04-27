@@ -20,7 +20,8 @@
 			value="jdbc:mysql://localhost:3306/asset">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="aloha"></property>
+		<property name="password" value="123456"></property>
+		
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -38,11 +39,22 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>com/model/Nature.hbm.xml</value>
 				<value>com/model/Section.hbm.xml</value>
 				<value>com/model/User.hbm.xml</value>
-				<value>com/model/AssetType.hbm.xml</value>
-				<value>com/model/Asset.hbm.xml</value></list>
+				<value>com/model/Asset.hbm.xml</value>
+				<value>com/model/Assetrebackimfo.hbm.xml</value>
+				<value>com/model/Assetdeliverlist.hbm.xml</value>
+				<value>com/model/Assetdeliver.hbm.xml</value>
+				<value>com/model/Assetimfo.hbm.xml</value>
+				<value>com/model/Depimfo.hbm.xml</value>
+				<value>com/model/Userimfo.hbm.xml</value>
+				<value>com/model/Assetcheck.hbm.xml</value>
+				<value>com/model/Abolishimfo.hbm.xml</value>
+				<value>com/model/Checkdetail.hbm.xml</value>
+				<value>com/model/Assetrepairimfo.hbm.xml</value>
+				<value>com/model/Parimfo.hbm.xml</value>
+				<value>com/model/Allocaimfo.hbm.xml</value>
+				<value>com/model/Assettype.hbm.xml</value></list>
 		</property></bean>
 	
 
@@ -85,6 +97,7 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	
 	<!-- Service -->
 	<bean id="sectionService" class="com.service.impl.SectionService" autowire="byName">
 		<property name="sectionDao" ref="sectionDao"></property>
@@ -96,6 +109,8 @@
 		
 	</bean>
 	
+
+	
 	<!-- Action -->
 	<bean id="sectionAction" class="com.action.SectionAction" autowire="byName">
 		<property name="sectionService" ref="sectionService"></property>
@@ -104,6 +119,8 @@
 	<bean id="usermanageAction" class="com.action.UserManageAction" autowire="byName">
 		<property name="usermanageService" ref="usermanageService"></property>
 	</bean>
+	
+
 	
 	<bean id="Login" class="com.action.LoginAction" autowire="byName">
 	</bean>

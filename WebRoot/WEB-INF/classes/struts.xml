@@ -17,5 +17,11 @@
 			<result name="createSuccess">/success.jsp</result>
 			<result name="createFail">/index.jsp</result>
 		</action>
+		
+		<action name="assettype" class="assettypeAction">
+			<result name="none">/none.jsp</result>
+			<result name="createSuccess">/success.jsp</result>
+			<result name="createFail">/index.jsp</result>
+		</action>
 	</package>
 </struts>    
