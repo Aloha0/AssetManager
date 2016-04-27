@@ -21,28 +21,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <h3>用户创建</h3>
-	<form action="user!create" method="post">
-		<p><label>用户名称：</label><input name="user.name" type="text"></p>
+    <h3>资产类别创建</h3>
+	<form action="assettype!create" method="post">
+		<p><label>资产类别名称：</label><input name="assettype.name" type="text"></p>
 		<p><input type="submit" value="提交"></p>
 	</form>    
 	
 	
-	<h3>用户修改</h3>
-	<form action="user!update" method="post">
-		<p><label>用户ID：</label><input name="user.id" type="text"></p>
-		<p><label>用户名称：</label><input name="user.name" type="text"></p>
+	<h3>资产类别修改</h3>
+	<form action="assettype!update" method="post">
+		<p><label>资产类别ID：</label><input name="assettype.id" type="text"></p>
+		<p><label>资产类别名称：</label><input name="assettype.name" type="text"></p>
 		<p><input type="submit" value="提交"></p>
 	</form>    
 	
-	<h3>用户删除</h3>
-	<form action="user!remove" method="post">
-		<p><label>用户ID：</label><input name="user.name" type="text"></p>
+	<h3>资产类别删除</h3>
+	<form action="assettype!remove" method="post">
+		<p><label>资产ID：</label><input name="assettype.name" type="text"></p>
 		<p><input type="submit" value="提交"></p>
 	</form>    
 	
-	<h3>用户列表</h3>
-	<form action="user" method="post">
+	<h3>资产类别列表</h3>
+	<form action="assettype" method="post">
 		<p><input type="submit" value="提交"></p>
 	</form>   
   </body>
