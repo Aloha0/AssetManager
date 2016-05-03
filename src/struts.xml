@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+	<package name="base" extends="struts-default" abstract="true" >	
+		<global-results>
+			<result name="login">/global/timeout.jsp</result>
+			<result name="success">/global/success.jsp</result>
+			<result name="error">/global/faile.jsp</result>
+			<result name="stop">/global/stop.jsp</result>
+			<result name="json">/global/json.jsp</result>	
+			<result name="topath" type="redirect">/${pagePath}</result>	
+			<result name="ok" type="chain">find{1}_{3}_{4}</result>
+		</global-results>
+		
+		<!-- 配置全局异常映射 by zl 2011-3-13--> 
+		<global-exception-mappings> 
+			<exception-mapping result="error" exception="java.sql.SQLException"/> 
+			<exception-mapping result="error" exception="java.lang.Exception"/> 
+		</global-exception-mappings> 
+		
+		<!-- 异步操作 -->
+		<action name="ajax*_*" class="{1}Action" method="{2}">
+			<result name="success">/global/ajax.jsp</result>
+			<result name="to_json">/global/json.jsp</result>	
+		</action>
+	</package>
+
 	<package name="user" namespace="/" extends="struts-default">
 		<action name="login" class="Login">
 			<result name="success">/index.jsp</result>
@@ -11,17 +35,13 @@
 			<result name="createSuccess">/success.jsp</result>
 			<result name="createFail">/index.jsp</result>
 		</action>
-		
-		<action name="usermanage" class="usermanageAction">
-			<result name="none">/none.jsp</result>
-			<result name="createSuccess">/success.jsp</result>
-			<result name="createFail">/index.jsp</result>
-		</action>
-		
-		<action name="assettype" class="assettypeAction">
-			<result name="none">/none.jsp</result>
-			<result name="createSuccess">/success.jsp</result>
-			<result name="createFail">/index.jsp</result>
+	</package>
+	
+	<package name="ajax" namespace="/" extends="json-default">
+		<action name="ajax*_*" class="{1}Ajax" method="{2}">
+			<result name="success" type="json">
+			   <param name="root">data</param> 
+			</result>
 		</action>
 	</package>
 </struts>    

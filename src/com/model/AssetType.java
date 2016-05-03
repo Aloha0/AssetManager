@@ -3,96 +3,91 @@ package com.model;
 import java.util.HashSet;
 import java.util.Set;
 
-
 /**
- * Assettype entity. @author MyEclipse Persistence Tools
+ * PAssetType entity. @author MyEclipse Persistence Tools
  */
 
-public class AssetType  implements java.io.Serializable {
+public class AssetType implements java.io.Serializable {
 
+	// Fields
 
-    // Fields    
+	private Integer id;
+	private AssetType pretype;
+	private String typenum;
+	private String name;
+	private String prename;
+	private Set<AssetType> sontypes = new HashSet(0);
 
-     private Integer assettypeid;
-     private String assettypecode;
-     private String assettypename;
-     private Integer preassettypeid;
-     private String preassettypename;
-     private Set assetimfos = new HashSet(0);
+	// Constructors
 
+	/** default constructor */
+	public AssetType() {
+	}
+	
+	public AssetType(int _id) {
+		id = _id;
+	}
 
-    // Constructors
+	/** full constructor */
+	public AssetType(AssetType PAssetType, String typenum, String name,
+			String prename, Set PAssetTypes) {
+		this.pretype = PAssetType;
+		this.typenum = typenum;
+		this.name = name;
+		this.prename = prename;
+		this.sontypes = PAssetTypes;
+	}
+	
+	
+	// Property accessors
 
-    /** default constructor */
-    public AssetType() {
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    
-    /** full constructor */
-    public AssetType(String assettypecode, String assettypename, Integer preassettypeid, String preassettypename, Set assetimfos) {
-        this.assettypecode = assettypecode;
-        this.assettypename = assettypename;
-        this.preassettypeid = preassettypeid;
-        this.preassettypename = preassettypename;
-        this.assetimfos = assetimfos;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-   
-    // Property accessors
+	public AssetType getPretype() {
+		return pretype;
+	}
 
-    public Integer getAssettypeid() {
-        return this.assettypeid;
-    }
-    
-    public void setAssettypeid(Integer assettypeid) {
-        this.assettypeid = assettypeid;
-    }
+	public void setPretype(AssetType pretype) {
+		this.pretype = pretype;
+	}
 
-    public String getAssettypecode() {
-        return this.assettypecode;
-    }
-    
-    public void setAssettypecode(String assettypecode) {
-        this.assettypecode = assettypecode;
-    }
+	public String getTypenum() {
+		return typenum;
+	}
 
-    public String getAssettypename() {
-        return this.assettypename;
-    }
-    
-    public void setAssettypename(String assettypename) {
-        this.assettypename = assettypename;
-    }
+	public void setTypenum(String typenum) {
+		this.typenum = typenum;
+	}
 
-    public Integer getPreassettypeid() {
-        return this.preassettypeid;
-    }
-    
-    public void setPreassettypeid(Integer preassettypeid) {
-        this.preassettypeid = preassettypeid;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getPreassettypename() {
-        return this.preassettypename;
-    }
-    
-    public void setPreassettypename(String preassettypename) {
-        this.preassettypename = preassettypename;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Set getAssetimfos() {
-        return this.assetimfos;
-    }
-    
-    public void setAssetimfos(Set assetimfos) {
-        this.assetimfos = assetimfos;
-    }
-   
+	public String getPrename() {
+		return prename;
+	}
 
+	public void setPrename(String prename) {
+		this.prename = prename;
+	}
 
+	public Set<AssetType> getSontypes() {
+		return sontypes;
+	}
 
-
-
+	public void setSontypes(Set<AssetType> sontypes) {
+		this.sontypes = sontypes;
+	}
 
 
 

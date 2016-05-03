@@ -1,42 +1,56 @@
 package com.dao.impl;
 
+import java.io.Serializable;
+
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.dao.IBaseDao;
+import com.model.Setting;
 
-public class BaseDao extends HibernateDaoSupport implements IBaseDao {
+public class BaseDao extends HibernateDaoSupport implements IBaseDao{
 
-	public int save(Object x) {
+	@Override
+	public Object create(Object obj) {
+		try{
+			getHibernateTemplate().save(obj);
+			return obj;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Object update(Object obj) {
 		try {
-			getHibernateTemplate().save(x);
-			return 0;
+			getHibernateTemplate().saveOrUpdate(obj);
+			return obj;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 1;
-			
 		}
+		return null;
 	}
-	
-	public int modify(Object x) {
+
+	@Override
+	public boolean delete(Object obj) {
 		try {
-			getHibernateTemplate().update(x);
-			return 0;
+			getHibernateTemplate().delete(obj);
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 1;
-			
 		}
+		return false;
 	}
-	
-	
-	public int delete(Object x) {
+
+	@Override
+	public <T> T get(Class<T> entry, Serializable id) {
 		try {
-			getHibernateTemplate().delete(x);
-			return 0;
+			return getHibernateTemplate().get(entry, id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 1;
-			
 		}
+		return null;
 	}
+
+
 }

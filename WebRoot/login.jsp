@@ -31,7 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <div class="modal-body">
 				    	<form action="login" method="post">
 				    
-
+						<div class="lock-screen-img">
+							<img src="images/profile/profile1.jpg" alt="">
+						</div>
 						
 						<div class="text-center m-top-sm">
 							<div class="h4 text-white">资产管理系统</div>

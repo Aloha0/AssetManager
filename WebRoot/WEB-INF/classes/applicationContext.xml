@@ -20,8 +20,6 @@
 			value="jdbc:mysql://localhost:3306/asset">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="123456"></property>
-		
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -34,24 +32,20 @@
 					org.hibernate.dialect.MySQLDialect
 				</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-
+				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>com/model/Assetrebackimfo.hbm.xml</value>
-				<value>com/model/Assetdeliverlist.hbm.xml</value>
-				<value>com/model/Assetdeliver.hbm.xml</value>
-				<value>com/model/Assetimfo.hbm.xml</value>
-				<value>com/model/Depimfo.hbm.xml</value>
-				<value>com/model/Userimfo.hbm.xml</value>
-				<value>com/model/Assetcheck.hbm.xml</value>
-				<value>com/model/Abolishimfo.hbm.xml</value>
-				<value>com/model/Checkdetail.hbm.xml</value>
-				<value>com/model/Assetrepairimfo.hbm.xml</value>
-				<value>com/model/Parimfo.hbm.xml</value>
-				<value>com/model/Allocaimfo.hbm.xml</value>
-				<value>com/model/Assettype.hbm.xml</value></list>
+				<value>com/model/Section.hbm.xml</value>
+				<value>com/model/User.hbm.xml</value>
+				<value>com/model/AssetType.hbm.xml</value>
+				<value>com/model/Asset.hbm.xml</value>
+				<value>com/model/Purchase.hbm.xml</value>
+				<value>com/model/PurchaseDetail.hbm.xml</value>
+				<value>com/model/Setting.hbm.xml</value>
+				
+			</list>
 		</property></bean>
 	
 
@@ -86,20 +80,76 @@
 	</aop:config>
 	
 	<!-- Dao -->
-
+	<bean id="baseDao" class="com.dao.impl.BaseDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sectionDao" class="com.dao.impl.SectionDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userDao" class="com.dao.impl.UserDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="settingDao" class="com.dao.impl.SettingDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="assetDao" class="com.dao.impl.AssetDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="purchaseDao" class="com.dao.impl.PurchaseDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<bean id="assetTypeDao" class="com.dao.impl.AssetTypeDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
 	
 	
 	<!-- Service -->
-
-	
-
+	<bean id="sectionService" class="com.service.impl.SectionService" autowire="byName">
+		<property name="sectionDao" ref="sectionDao"></property>
+	</bean>
+	<bean id="userService" class="com.service.impl.UserService" autowire="byName">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="settingService" class="com.service.impl.SettingService" autowire="byName">
+		<property name="setDao" ref="settingDao"></property>
+	</bean>
+	<bean id="assetService" class="com.service.impl.AssetService" autowire="byName">
+		<property name="assetDao" ref="assetDao"></property>
+	</bean>	
+	<bean id="purchaseService" class="com.service.impl.PurchaseService" autowire="byName">
+		<property name="pDao" ref="purchaseDao"></property>
+	</bean>	
+	<bean id="assetTypeService" class="com.service.impl.AssetTypeService" autowire="byName">
+		<property name="assetTypeDao" ref="assetTypeDao"></property>
+	</bean>	
 	
 	<!-- Action -->
-
-	
+	<bean id="sectionAction" class="com.action.SectionAction" autowire="byName">
+		<property name="sectionService" ref="sectionService"></property>
+	</bean>
 
 	
 	<bean id="Login" class="com.action.LoginAction" autowire="byName">
 	</bean>
-
+	
+	<!-- Ajax -->
+	<bean id="sectionAjax" class="com.action.ajax.SectionAjax" autowire="byName">
+		<property name="sectionService" ref="sectionService"></property>
+	</bean>
+	<bean id="userAjax" class="com.action.ajax.UserAjax" autowire="byName">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="settingAjax" class="com.action.ajax.SettingAjax" >
+		<property name="settingService" ref="settingService"></property>
+	</bean>
+	<bean id="assetAjax" class="com.action.ajax.AssetAjax" >
+		<property name="assetService" ref="assetService"></property>
+	</bean>
+	
+	<bean id="purchaseAjax" class="com.action.ajax.PurchaseAjax" >
+		<property name="pService" ref="purchaseService"></property>
+	</bean>	
+	<bean id="assetTypeAjax" class="com.action.ajax.AssetTypeAjax" >
+		<property name="typeService" ref="assetTypeService"></property>
+	</bean>	
 </beans>
