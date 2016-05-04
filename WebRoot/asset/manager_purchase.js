@@ -61,18 +61,32 @@
 	                      } 
 	                  }, 
 	                  {
+	                      title: '财务入账',
+	                      field: 'status',
+	                      align: 'center',
+	                      valign: 'middle',
+	                      formatter:function(value,row,index){ 
+	                    	  if(value == 0)
+	                    		  return "未入账";
+	                    	  else
+	                    		  return "已入账";
+	                      } 
+	                  }, 
+	                  {
 	                      title: '操作',
 	                      field: 'id',
 	                      align: 'center',
 	                      formatter:function(value,row,index){
+	                    	  var a = '<a href="#" mce_href="#" onclick="ajax_finance_open(\''+ row.id +'\')">财务入账</a> ';
 	                    	  var s = '<a href="#" mce_href="#" onclick="purchase_show('+value+')">查看</a> ';  
 	                    	  var d = '<a href="#" mce_href="#" onclick="ajax_setting_delete(\''+ row.id +'\')">删除</a> ';  
-	                          return s+d;  
+	                          return a+s+d;  
 	                      } 
 	                  }
 	              ]
 	      });
-	
+
+	//查看
 	function purchase_show(id){
 		data = $table.bootstrapTable('getRowByUniqueId', id);
     	$('#form_show_purchase input[name="purchase_name_text"]').val(data.detail.name);
@@ -175,6 +189,48 @@
         });
     }
 
-
+    //打开财务入账对话框
+    function ajax_finance_open(id){
+    	data = $table.bootstrapTable('getRowByUniqueId', id);
+    	$('#form_add_finance input[name="purchase_name_text"]').val(data.detail.name);
+    	$('#form_add_finance input[name="purchase_purpose_text"]').val(data.purpose);
+    	$('#form_add_finance input[name="asset_type_text"]').val('');
+    	$('#form_add_finance input[name="purchase_unit_text"]').val(data.detail.unit);
+    	$('#form_add_finance input[name="purchase_num_text"]').val(data.detail.num);
+    	$('#form_add_finance input[name="purchase_remark_text"]').val(data.detail.remark);
+    	$('#form_add_finance input[name="purchase_model_text"]').val(data.detail.type);
+    	$('#form_add_finance input[name="purchase_maker_text"]').val(data.detail.maker);
+    	$('#form_add_finance input[name="purchase_supply_text"]').val(data.detail.supply);
+    	$('#form_add_finance input[name="purchase_price_text"]').val(data.detail.price);
+    	$('#form_add_finance input[name="finance_id_text"]').val(id);
+    	$('#finance-add-modal').modal("show");
+    }
     
+//财务入账
+function ajax_finance_add(){
+	$id = $('#form_add_finance input[name="finance_id_text"]').val();
+	alert("删除："+ $id);
+	
+	/*
+    var aj = $.ajax({  
+	    url:'../ajaxfinance_add',// 跳转到 action  
+	    data:{  
+	    	setting_id : id,
+	    },  
+	    type:'post',  
+	    cache:false,  
+	    dataType:'json',  
+	    success:function(data) {  
+	        alert(data.msg);  
+	        if(data.status =="0" ){  
+	             $('#setting_table').bootstrapTable('refresh');
+	        }
+	     },  
+	     error : function() {  
+	    	alert("异常！");  
+	     }  
+	});
+	*/
+	
+}
 

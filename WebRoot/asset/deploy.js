@@ -36,7 +36,7 @@ var $departtable = $('#depart_table');
               ]
       });
    
-    
+
 function open_edit_dialog(id){
 	data = $departtable.bootstrapTable('getRowByUniqueId', id);
 	//alert(data.name);
@@ -208,10 +208,118 @@ var $table = $('#asset_type_table');
                       field: 'id',
                       align: 'center',
                       formatter:function(value,row,index){  
-                    	  var e = '<a href="#" mce_href="#" onclick="edit(\''+ row.id + '\')">编辑</a> ';  
-                    	  var d = '<a href="#" mce_href="#" onclick="del(\''+ row.id +'\')">删除</a> ';  
+                    	  var e = '<a href="#" mce_href="#" onclick="open_typeedit_dialog(\''+ row.id + '\')">编辑</a> ';  
+                    	  var d = '<a href="#" mce_href="#" onclick="ajax_delete_assettype(\''+ row.id +'\')">删除</a> ';  
                         return e+d;  
                       } 
                   }
               ]
       });
+    
+    function open_typeedit_dialog(id){
+    	data = $table.bootstrapTable('getRowByUniqueId', id);
+    	//alert(data.name);
+    	$('#form_assettype_edit input[name="asset_type_num"]').val(data.typenum);
+    	$('#form_assettype_edit input[name="asset_type_name"]').val(data.name);
+    	$('#form_assettype_edit input[name="asset_type_prename"]').val(data.prename);
+    	
+    	$('#assettype-edit-modal').modal("show");
+    }    
+    
+  //添加
+    function ajax_add_assettype(){
+    	$assettype_num = $('#form_assettype_add input[name="asset_type_num"]').val();
+    	$assettype_name = $('#form_assettype_add input[name="asset_type_name"]').val();
+    	$assettype_prename = $('#form_assettype_add input[name="asset_type_prename"]').val();
+    	var aj = $.ajax({  
+    	    url:'../ajaxassettype_create',// 跳转到 action  
+    	    data:{  
+    	    	asset_type_num : $assettype_num,
+    	    	asset_type_name : $assettype_name,
+    	    	asset_type_prename : $assettype_prename,
+    	    },  
+    	    type:'post',  
+    	    cache:false,  
+    	    dataType:'json',  
+    	    success:function(data) {  
+    	        alert(data.msg);  
+    	        if(data.status =="0" ){  
+    	        	$('#assettype-add-modal').modal('hide');
+   	                $('#assettype_table').bootstrapTable('refresh');
+    	        }
+    	     },  
+    	     error : function() {  
+    	    	alert("异常！");  
+    	     }  
+    	});
+    }
+    
+  //编辑
+    function ajax_edit_assettype(){
+    	$assettype_id   = $('#form_assettype_edit input[name="asset_type_id"]').val(); //jsp
+    	$assettype_num = $('#form_assettype_edit input[name="asset_type_num"]').val();
+    	$assettype_name = $('#form_assettype_edit input[name="asset_type_name"]').val();
+    	$assettype_prename = $('#form_assettype_edit input[name="asset_type_prename"]').val();
+
+    	
+    	var aj = $.ajax({  
+    	    url:'../ajaxassettype_update',// 跳转到 action  
+    	    data:{  
+    	    	asset_type_id : $assettype_id,
+    	    	asset_type_num : $assettype_num,
+    	    	asset_type_name : $assettype_name,
+    	    	asset_type_prename : $assettype_prename,
+    	    },  
+    	    type:'post',  
+    	    cache:false,  
+    	    dataType:'json',  
+    	    success:function(data) {  
+    	        alert(data.msg);  
+    	        if(data.status =="0" ){  
+    	             $('#assettype-edit-modal').modal('hide');
+    	             $('#assettype_table').bootstrapTable('refresh');
+    	        }
+    	     },  
+    	     error : function() {  
+    	    	alert("异常！");  
+    	     }  
+    	});
+    }
+    
+  //删除
+    function ajax_delete_assettype(id){
+    	
+    	BootstrapDialog.show({
+            title: '确认删除资产类型',
+            message: '资产类型信息将被永久删除',
+            buttons: [{
+                label: '确认',
+                action: function(dialog) {
+                    dialog.close();
+                    var aj = $.ajax({  
+    	        	    url:'../ajaxassettype_remove',// 跳转到 action  
+    	        	    data:{  
+    	        	    	asset_type_id : id,   //assettype_id
+    	        	    },  
+    	        	    type:'post',  
+    	        	    cache:false,  
+    	        	    dataType:'json',  
+    	        	    success:function(data) {  
+    	        	        alert(data.msg);  
+    	        	        if(data.status =="0" ){  
+    	        	             $('#depart_table').bootstrapTable('refresh');
+    	        	        }
+    	        	     },  
+    	        	     error : function() {  
+    	        	    	alert("异常！");  
+    	        	     }  
+    	        	});
+                }
+            }, {
+                label: '取消',
+                action: function(dialog) {
+                    dialog.close();
+                }
+            }]
+        });
+    }

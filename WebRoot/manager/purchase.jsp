@@ -281,7 +281,118 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div><!-- /.modal -->
 </div>
 
+	<!-- 模态框（Modal） -->
+   <div class="modal fade " data-backdrop="false"  id="finance-add-modal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" >
+              财务入库
+            </h4>
+         </div>
+         <form id="form_add_finance" action="" class="form-horizontal form-label-left">
+         <div class="modal-body">
+            	<div class="form-group">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_name_text">
+            		资产名称:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-8">
+            			<input type="text" disabled="disabled" name="purchase_name_text" required="required" class="form-control col-md-7" />
+            		    <input type="text" disabled="disabled" name="finance_id_text" required="required" class="hide form-control col-md-7" />
+            		</div>
+            		
+            	</div>
+             	<div class="form-group">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_val_text">
+            		资产类别:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-8">
+            			<input type="text" disabled="disabled" name="asset_type_text" required="required" class="form-control col-md-7" />
+            		</div>
+            	</div> 
 
+            	<div class="form-group">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_type_text">
+            		资产型号:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-8">
+            			<input type="text" disabled="disabled" name="purchase_model_text" required="required" class="form-control col-md-7" />
+            		</div>
+            	</div>  
+            	<div class="form-group">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_type_text">
+            		数量:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-3">
+            			<input type="text" disabled="disabled" name="purchase_num_text" required="required" class="form-control" />
+            		</div>
+            		
+            		<label class="control-label col-md-2" for="setting_type_text">
+            		单位:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-3">
+            			<input type="text" disabled="disabled" name="purchase_unit_text" required="required" class="form-control" />
+            		</div>
+            	</div>    
+            	<div class="form-group">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_type_text">
+            		制造商:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-3">
+            			<input type="text" disabled="disabled" name="purchase_maker_text" required="required" class="form-control" />
+            		</div>
+            		
+            		<label class="control-label col-md-2" for="setting_type_text">
+            		供货商:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-3">
+            			<input type="text" disabled="disabled" name="purchase_supply_text" required="required" class="form-control" />
+            		</div>
+            	</div>   
+            	
+            	<div class="form-group">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_type_text">
+            		单价:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-3">
+            			<input type="text" disabled="disabled" name="purchase_price_text" required="required" class="form-control" />
+            		</div>
+            		
+            	</div>   
+            	
+            	<div class="form-group">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="purchase_purpose_text">
+            		采购用途:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-8">
+            			<input type="text" disabled="disabled" name="purchase_purpose_text" required="required" class="form-control col-md-7" />
+            		</div>
+            	</div>  
+            	<div class="form-group">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_type_text">
+            		备注:<span class="required">*</span>
+            		</label>
+            		<div class="col-md-8">
+            			<textarea rows="3"  name="purchase_remark_text" cols="" class="form-control col-md-7" ></textarea>
+            		</div>
+            	</div>  
+         </div>
+         <div class="modal-footer">
+
+            <input type="button" data-dismiss="modal" class="btn btn-default" value="关闭"/>
+            <button id="from_add_btn" onclick="ajax_finance_add()" type="button" class="btn btn-primary">确认入账
+            </button>
+         </div>
+         </form>
+         
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
 
   <%@include file="../footer.html" %>
   <script src="<%=basePath %>/asset/manager_purchase.js" type="text/javascript"></script>
