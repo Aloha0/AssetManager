@@ -7,4 +7,6 @@ import com.model.AssetType;
 public interface IAssetTypeDao {
 
 	public List<AssetType> findAll();
+	
+	public AssetType get(int id);
 }

@@ -6,6 +6,7 @@ import com.dao.IAssetDao;
 import com.dao.IAssetTypeDao;
 import com.model.Asset;
 import com.model.AssetType;
+import com.model.Section;
 
 public class AssetTypeDao extends BaseDao implements IAssetTypeDao{
 
@@ -20,7 +21,11 @@ public class AssetTypeDao extends BaseDao implements IAssetTypeDao{
 		return null;
 	}
 
-
+	@Override
+	public AssetType get(int id) {
+		
+		return super.getHibernateTemplate().get(AssetType.class, id);
+	}
 
 
 }
