@@ -166,7 +166,7 @@
             		</label>
             		<div class="col-md-8">
             			<input type="text" name="asset_type_num" required="required" class="form-control col-md-7" />
-            			<input type="text" name="asset_type_id" required="required" class="hide form-control col-md-7" />
+            			<input type="text" name="asset_type_id" required="required" class=" form-control col-md-7" />
 
             		</div>
             	</div>

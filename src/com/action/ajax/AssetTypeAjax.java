@@ -58,6 +58,7 @@ public class AssetTypeAjax extends BaseAjax {
 	}
 	
 	public String update() {
+		System.out.println("edit : id :"+assettype_id+"  "+assettype_name);
 		int res = 0;
 		System.out.println(assettype_id + "--"+assettype_name);
 		if(assettype_id<=0 || assettype_name.equals(""))
@@ -66,6 +67,7 @@ public class AssetTypeAjax extends BaseAjax {
 			AssetType tmp = new AssetType();
 			tmp.setId(assettype_id);
 			tmp.setName(assettype_name);
+			tmp.setTypenum(assettype_typenum);
 			res = typeService.update(tmp);
 		}
 		data = initMap();
