@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dao.impl.AssetDao;
 import com.model.Asset;
+import com.model.User;
 import com.service.IAssetService;
 
 public class AssetService implements IAssetService {
@@ -45,6 +46,11 @@ public class AssetService implements IAssetService {
 		return 0;
 	}
 
+	@Override
+	public List<Asset> getLikeName(String name) {
+		return assetDao.findAssetLikeName(name);
+	}
+	
 	@Override
 	public List<Asset> findAll() {
 		return assetDao.findAll();

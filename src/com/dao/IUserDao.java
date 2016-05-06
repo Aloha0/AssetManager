@@ -13,5 +13,5 @@ public interface IUserDao {
 	
 	public List<User> findAllUser();
 
-	
+	public List<User> findUserLikeName(String name);
 }

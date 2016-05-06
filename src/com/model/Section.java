@@ -13,7 +13,7 @@ public class Section implements java.io.Serializable {
 
 	private Integer id;
 	private String name;
-	private Set users = new HashSet(0);
+//	private Set users = new HashSet(0);
 
 	// Constructors
 
@@ -22,20 +22,13 @@ public class Section implements java.io.Serializable {
 	}
 
 
+	public Section(int user_depart) {
+		id =user_depart;
+	}
+
+
 	/** full constructor */
-	public Section(String name, Set PUsers) {
-		this.name = name;
-		this.users = PUsers;
-	}
-
-	// Property accessors
-
-	public Section(int _id) {
-		id = _id;
-		name = "";
-		users = null;
-	}
-
+	
 
 	public Integer getId() {
 		return this.id;
@@ -53,13 +46,6 @@ public class Section implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Set getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set users) {
-		this.users = users;
-	}
 
 
 }

@@ -23,6 +23,10 @@ public class UserService implements IUserService{
 		return userDao.findUserByName(name);
 	}
 
+	@Override
+	public List<User> getLikeName(String name) {
+		return userDao.findUserLikeName(name);
+	}
 	
 	/**
 	 * 创建用户 0成功 1 用户已存在 2用户信息不完整

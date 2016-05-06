@@ -43,6 +43,7 @@
 				<value>com/model/AssetType.hbm.xml</value>
 				<value>com/model/Asset.hbm.xml</value>
 				<value>com/model/Purchase.hbm.xml</value>
+				<value>com/model/AssetReturn.hbm.xml</value>
 				<value>com/model/PurchaseDetail.hbm.xml</value>
 				<value>com/model/Setting.hbm.xml</value>
 				
@@ -102,6 +103,9 @@
 	<bean id="assetTypeDao" class="com.dao.impl.AssetTypeDao" >
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>	
+	<bean id="assetReturnDao" class="com.dao.impl.AssetReturnDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
 	
 	
 	<!-- Service -->
@@ -122,6 +126,9 @@
 	</bean>	
 	<bean id="assetTypeService" class="com.service.impl.AssetTypeService" autowire="byName">
 		<property name="assetTypeDao" ref="assetTypeDao"></property>
+	</bean>	
+	<bean id="assetReturnService" class="com.service.impl.AssetReturnService" autowire="byName">
+		<property name="assetreturnDao" ref="assetReturnDao"></property>
 	</bean>	
 	
 	<!-- Action -->
@@ -152,5 +159,10 @@
 	</bean>	
 	<bean id="assetTypeAjax" class="com.action.ajax.AssetTypeAjax" >
 		<property name="typeService" ref="assetTypeService"></property>
+	</bean>	
+	<bean id="assetReturnAjax" class="com.action.ajax.AssetReturnAjax" >
+		<property name="returnService" ref="assetReturnService"></property>
+		<property name="userService" ref="userService"></property>
+		<property name="assetService" ref="assetService"></property>
 	</bean>	
 </beans>

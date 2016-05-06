@@ -19,5 +19,6 @@ public interface IUserService {
 	public int delete(int userID);
 
 	public List<User> findAll();
-	
+
+	public List<User> getLikeName(String name);
 }

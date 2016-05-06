@@ -3,7 +3,6 @@ package com.service;
 import java.util.List;
 
 import com.model.Asset;
-import com.model.Setting;
 
 public interface IAssetService {
 	public Asset get(int id);
@@ -14,6 +13,8 @@ public interface IAssetService {
 	
 	public int delete(int assetID);
 
+	public List<Asset> getLikeName(String name);
+		
 	public List<Asset> findAll();
 	
 }

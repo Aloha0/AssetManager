@@ -25,9 +25,7 @@ public class SectionAjax extends BaseAjax {
 	public String list(){
 		data = initMap();
 		List<Section> list  = sectionService.findSections();
-		for (Section section : list) {
-			section.setUsers(null);
-		}
+
 		data.put("status", 0);
 		data.put("total", list.size());
 		data.put("data", list );

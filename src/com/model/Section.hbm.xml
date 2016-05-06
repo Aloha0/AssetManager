@@ -13,11 +13,6 @@
         <property name="name" type="java.lang.String">
             <column name="name" length="50" />
         </property>
-        <set name="users" inverse="true" lazy="false">
-            <key>
-                <column name="sectionid" />
-            </key>
-            <one-to-many class="com.model.User" />
-        </set>
+
     </class>
 </hibernate-mapping>
