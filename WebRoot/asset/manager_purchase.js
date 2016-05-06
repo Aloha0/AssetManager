@@ -104,6 +104,22 @@
 
 	}
 	
+    //打开财务入账对话框
+    function ajax_finance_open(id){
+    	data = $table.bootstrapTable('getRowByUniqueId', id);
+    	$('#form_add_finance input[name="purchase_name_text"]').val(data.detail.name);
+    	$('#form_add_finance input[name="purchase_purpose_text"]').val(data.purpose);
+    	$('#form_add_finance input[name="asset_type_text"]').val('');
+    	$('#form_add_finance input[name="purchase_unit_text"]').val(data.detail.unit);
+    	$('#form_add_finance input[name="purchase_num_text"]').val(data.detail.num);
+    	$('#form_add_finance input[name="purchase_remark_text"]').val(data.detail.remark);
+    	$('#form_add_finance input[name="purchase_model_text"]').val(data.detail.type);
+    	$('#form_add_finance input[name="purchase_maker_text"]').val(data.detail.maker);
+    	$('#form_add_finance input[name="purchase_supply_text"]').val(data.detail.supply);
+    	$('#form_add_finance input[name="purchase_price_text"]').val(data.detail.price);
+    	$('#form_add_finance input[name="finance_id_text"]').val(id);
+    	$('#finance-add-modal').modal("show");
+    }
 	
     //添加
     function ajax_purchase_add(){
@@ -189,22 +205,7 @@
         });
     }
 
-    //打开财务入账对话框
-    function ajax_finance_open(id){
-    	data = $table.bootstrapTable('getRowByUniqueId', id);
-    	$('#form_add_finance input[name="purchase_name_text"]').val(data.detail.name);
-    	$('#form_add_finance input[name="purchase_purpose_text"]').val(data.purpose);
-    	$('#form_add_finance input[name="asset_type_text"]').val('');
-    	$('#form_add_finance input[name="purchase_unit_text"]').val(data.detail.unit);
-    	$('#form_add_finance input[name="purchase_num_text"]').val(data.detail.num);
-    	$('#form_add_finance input[name="purchase_remark_text"]').val(data.detail.remark);
-    	$('#form_add_finance input[name="purchase_model_text"]').val(data.detail.type);
-    	$('#form_add_finance input[name="purchase_maker_text"]').val(data.detail.maker);
-    	$('#form_add_finance input[name="purchase_supply_text"]').val(data.detail.supply);
-    	$('#form_add_finance input[name="purchase_price_text"]').val(data.detail.price);
-    	$('#form_add_finance input[name="finance_id_text"]').val(id);
-    	$('#finance-add-modal').modal("show");
-    }
+
     
 //财务入账
 function ajax_finance_add(){

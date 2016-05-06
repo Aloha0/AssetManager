@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li><a href="#b">财务入库</a>
                 </li>
-                <li><a href="#c">资产归还</a>
+                <li><a href="<%=basePath %>manager/asset_return.jsp">资产归还</a>
                 </li>
                 </ul>
             </li>

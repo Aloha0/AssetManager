@@ -219,6 +219,8 @@ var $table = $('#asset_type_table');
     function open_typeedit_dialog(id){
     	data = $table.bootstrapTable('getRowByUniqueId', id);
     	//alert(data.name);
+    	$('#form_assettype_edit input[name="asset_type_id"]').val(data.id);
+
     	$('#form_assettype_edit input[name="asset_type_num"]').val(data.typenum);
     	$('#form_assettype_edit input[name="asset_type_name"]').val(data.name);
     	$('#form_assettype_edit input[name="asset_type_prename"]').val(data.prename);
@@ -232,11 +234,11 @@ var $table = $('#asset_type_table');
     	$assettype_name = $('#form_assettype_add input[name="asset_type_name"]').val();
     	$assettype_prename = $('#form_assettype_add input[name="asset_type_prename"]').val();
     	var aj = $.ajax({  
-    	    url:'../ajaxassettype_create',// 跳转到 action  
+    	    url:'../ajaxassetType_create',// 跳转到 action  
     	    data:{  
-    	    	asset_type_num : $assettype_num,
-    	    	asset_type_name : $assettype_name,
-    	    	asset_type_prename : $assettype_prename,
+    	    	assettype_typenum : $assettype_num,
+    	    	assettype_name : $assettype_name,
+    	    	assettype_prename : $assettype_prename,
     	    },  
     	    type:'post',  
     	    cache:false,  
@@ -245,7 +247,7 @@ var $table = $('#asset_type_table');
     	        alert(data.msg);  
     	        if(data.status =="0" ){  
     	        	$('#assettype-add-modal').modal('hide');
-   	                $('#assettype_table').bootstrapTable('refresh');
+   	                $('#asset_type_table').bootstrapTable('refresh');
     	        }
     	     },  
     	     error : function() {  
@@ -257,18 +259,18 @@ var $table = $('#asset_type_table');
   //编辑
     function ajax_edit_assettype(){
     	$assettype_id   = $('#form_assettype_edit input[name="asset_type_id"]').val(); //jsp
-    	$assettype_num = $('#form_assettype_edit input[name="asset_type_num"]').val();
+    	$assettype_num  = $('#form_assettype_edit input[name="asset_type_num"]').val();
     	$assettype_name = $('#form_assettype_edit input[name="asset_type_name"]').val();
     	$assettype_prename = $('#form_assettype_edit input[name="asset_type_prename"]').val();
 
-    	
+
     	var aj = $.ajax({  
-    	    url:'../ajaxassettype_update',// 跳转到 action  
+    	    url:'../ajaxassetType_update',// 跳转到 action  
     	    data:{  
-    	    	asset_type_id : $assettype_id,
-    	    	asset_type_num : $assettype_num,
-    	    	asset_type_name : $assettype_name,
-    	    	asset_type_prename : $assettype_prename,
+    	    	assettype_id : $assettype_id,
+    	    	assettype_typenum : $assettype_num,
+    	    	assettype_name : $assettype_name,
+    	    	assettype_prename : $assettype_prename,
     	    },  
     	    type:'post',  
     	    cache:false,  
@@ -277,7 +279,7 @@ var $table = $('#asset_type_table');
     	        alert(data.msg);  
     	        if(data.status =="0" ){  
     	             $('#assettype-edit-modal').modal('hide');
-    	             $('#assettype_table').bootstrapTable('refresh');
+    	             $('#asset_type_table').bootstrapTable('refresh');
     	        }
     	     },  
     	     error : function() {  
@@ -297,9 +299,9 @@ var $table = $('#asset_type_table');
                 action: function(dialog) {
                     dialog.close();
                     var aj = $.ajax({  
-    	        	    url:'../ajaxassettype_remove',// 跳转到 action  
+    	        	    url:'../ajaxassetType_remove',// 跳转到 action  
     	        	    data:{  
-    	        	    	asset_type_id : id,   //assettype_id
+    	        	    	assettype_id : id,   //assettype_id
     	        	    },  
     	        	    type:'post',  
     	        	    cache:false,  
@@ -307,7 +309,7 @@ var $table = $('#asset_type_table');
     	        	    success:function(data) {  
     	        	        alert(data.msg);  
     	        	        if(data.status =="0" ){  
-    	        	             $('#depart_table').bootstrapTable('refresh');
+    	        	             $('#asset_type_table').bootstrapTable('refresh');
     	        	        }
     	        	     },  
     	        	     error : function() {  
