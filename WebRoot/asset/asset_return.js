@@ -72,12 +72,13 @@ var $table = $('#asset_return_table');
 
     //查询
     function search_asset_return(){
+    	
     	$searchtext_name  = $('#search_assetreturn').val();
-   	
+    	
     	var aj = $.ajax({  
-    	    url:'../ajaxasset_return',// 跳转到 action  
+    	    url:'../ajaxassetreturn_search_asset',// 跳转到 action  
     	    data:{  
-    	    	searchtext_name : $searchtext_name,   ///    	    	
+    	    	asset_name : $searchtext_name,   ///    	    	
     	    },  
     	    type:'post',  
     	    cache:false,  
@@ -97,9 +98,9 @@ var $table = $('#asset_return_table');
     //打开领用对话框
     function asset_get_open(id){
     	data = $table.bootstrapTable('getRowByUniqueId', id);
-    	$('#form_asset_get input[name="assetreturn_name_text"]').val(data.name);
-    	$('#form_asset_get input[name="asset_id_text"]').val(data.id);
-    	$('#form_asset_get input[name="recipient_id_text"]').val(data.id);
+    	$('#form_asset_get input[name="assetreturn_name_text"]').val(data.asset_name);
+    	$('#form_asset_get input[name="asset_id_text"]').val(data.assetid);
+    	$('#form_asset_get input[name="recipient_id_text"]').val(data.recipientid);
     	
     	$('#asset-get-modal').modal("show");
     }
@@ -107,15 +108,15 @@ var $table = $('#asset_return_table');
     //领用
 function ajax_asset_get(){
 	//alert(data.name);
-	$asset_name = $('#form_asset_get input[name="assetreturn_name_text"]').val();
+	$asset_get_name = $('#form_asset_get input[name="assetreturn_name_text"]').val();
 	$asset_id = $('#form_asset_get input[name="asset_id_text"]').val();
 	$recipient_id = $('#form_asset_get input[name="recipient_id_text"]').val();
 	
 	var aj = $.ajax({  
-	    url:'../ajaxassetreturn_add',// 跳转到 action  
+	    url:'../ajaxassetreturn_create',// 跳转到 action  
 	    data:{  
-	    	asset_id : asset_id,
-	    	recipient_id : recipient_id,
+	    	assetid : asset_id,
+	    	recipientid : recipient_id,
 	    },  
 	    type:'post',  
 	    cache:false,  
@@ -136,10 +137,10 @@ function ajax_asset_get(){
 //打开归还对话框
 function asset_return_open(id){
 	data = $table.bootstrapTable('getRowByUniqueId', id);
-	$('#form_asset_return input[name="assetreturn_name_text"]').val(data.name);
-	$('#form_asset_return input[name="asset_id_text"]').val(data.id);
-	$('#form_asset_return input[name="recipient_id_text"]').val(data.id);
-	$('#form_asset_return input[name="returner_id_text"]').val(data.id);
+	$('#form_asset_return input[name="assetreturn_name_text"]').val(data.asset_name);
+	$('#form_asset_return input[name="asset_id_text"]').val(data.assetid);
+	$('#form_asset_return input[name="recipient_id_text"]').val(data.recipientid);
+	$('#form_asset_return input[name="returner_id_text"]').val(data.returnerid);
 	
 	$('#asset-return-modal').modal("show");
 }
@@ -152,7 +153,7 @@ function ajax_asset_return(){
 	$returner_id = $('#form_asset_return input[name="returner_id"]').val();
 	
 	var aj = $.ajax({  
-	    url:'../ajaxassetreturn_add',// 跳转到 action  
+	    url:'../ajaxassetreturn_update',// 跳转到 action  
 	    data:{  
 	    	asset_id : asset_id,
 	    	returner_id : returner_id,
