@@ -20,7 +20,7 @@
 			value="jdbc:mysql://localhost:3306/asset">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="123456"></property>
+		<property name="password" value=""></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -156,7 +156,9 @@
 	
 	<bean id="purchaseAjax" class="com.action.ajax.PurchaseAjax" >
 		<property name="pService" ref="purchaseService"></property>
+		<property name="assetService" ref="assetService"></property>
 	</bean>	
+	
 	<bean id="assetTypeAjax" class="com.action.ajax.AssetTypeAjax" >
 		<property name="typeService" ref="assetTypeService"></property>
 	</bean>	

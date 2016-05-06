@@ -23,7 +23,7 @@ public class PurchaseDao extends BaseDao implements IPurchaseDao{
 	public PurchaseDetail getChaseDetail(int id) {
 		return get(PurchaseDetail.class, id);
 	}
-
+	
 	@Override
 	public Purchase remove(int id) {
 		try {
