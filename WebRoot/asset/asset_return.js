@@ -1,6 +1,6 @@
 var $table = $('#asset_return_table');
     $table.bootstrapTable({
-    url: '../ajaxassetreturn_list', 
+    url: '../ajaxassetReturn_list', 
     dataType: 'json',
     method:'get',
     pagination: true,
@@ -76,7 +76,7 @@ var $table = $('#asset_return_table');
     	$searchtext_name  = $('#search_assetreturn').val();
     	
     	var aj = $.ajax({  
-    	    url:'../ajaxassetreturn_search_asset',// 跳转到 action  
+    	    url:'../ajaxassetReturn_search_asset',// 跳转到 action  
     	    data:{  
     	    	asset_name : $searchtext_name,   ///    	    	
     	    },  
@@ -113,10 +113,10 @@ function ajax_asset_get(){
 	$recipient_id = $('#form_asset_get input[name="recipient_id_text"]').val();
 	
 	var aj = $.ajax({  
-	    url:'../ajaxassetreturn_create',// 跳转到 action  
+	    url:'../ajaxassetReturn_create',// 跳转到 action  
 	    data:{  
-	    	assetid : asset_id,
-	    	recipientid : recipient_id,
+	    	assetid : $asset_id,
+	    	recipientid : $recipient_id,
 	    },  
 	    type:'post',  
 	    cache:false,  
@@ -153,10 +153,10 @@ function ajax_asset_return(){
 	$returner_id = $('#form_asset_return input[name="returner_id"]').val();
 	
 	var aj = $.ajax({  
-	    url:'../ajaxassetreturn_update',// 跳转到 action  
+	    url:'../ajaxassetReturn_update',// 跳转到 action  
 	    data:{  
-	    	asset_id : asset_id,
-	    	returner_id : returner_id,
+	    	asset_id : $asset_id,
+	    	returner_id : $returner_id,
 	    },  
 	    type:'post',  
 	    cache:false,  

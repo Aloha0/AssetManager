@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                  <div class="clearfix"></div>
 		                </div>
 		                <div class="x_content">
-		                  <table id="asset_return_table"  data-toggle="table" class="table table-striped">
+		                  <table id="asset_return_table" data-unique-id= "id"  data-toggle="table" class="table table-striped">
 		       
 
 		                  </table>
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		</label>
             		<div class="col-md-8">
             			<input type="text" name="assetreturn_name_text" required="required" class="form-control col-md-7" />
-            			<input type="text" name="asset_id_text" required="required" class=" form-control col-md-7" />
+            			<input type="text" name="asset_id_text" required="required" class=" form-control col-md-7" />       <!-- hide -->
 
             		</div>
              	<div class="form-group">
@@ -143,9 +143,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		</label>
             		<div class="col-md-8">
             			<input type="text" name="assetreturn_name_text" required="required" class="form-control col-md-7" />
-            			<input type="text" name="asset_id_text" required="required" class=" form-control col-md-7" />
+            			<input type="text" name="asset_id_text" required="required" class=" form-control col-md-7" />    <!-- hide -->
 
             		</div>
+            	</div>
              	<div class="form-group">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_val_text">
             		资产类别:<span class="required">*</span>
@@ -155,7 +156,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		</div>
             	</div> 
             	
-            	</div>
              	<div class="form-group">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_val_text">
             		领用人ID:<span class="required">*</span>
@@ -165,7 +165,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		</div>
             	</div> 
             	
-            	</div>
              	<div class="form-group">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="setting_val_text">
             		归还人ID:<span class="required">*</span>
@@ -176,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	</div> 
             
             </form>
-         </div>
+         	</div>
          <div class="modal-footer">
             <button type="button" class="btn btn-default" 
                data-dismiss="modal">关闭

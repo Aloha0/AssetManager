@@ -47,8 +47,8 @@ public class PurchaseAjax extends BaseAjax {
 	public String list(){
 		data = initMap();
 		List list = pService.findAll();
+		
 		data.put("status", 0);
-		data.put("total", list.size());
 		data.put("data", list);		
 		return SUCCESS;
 	}
