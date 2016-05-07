@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		</label>
             		<div class="col-md-8">
             			<input type="text" name="assetreturn_name_text" required="required" class="form-control col-md-7" />
-            			<input type="text" name="asset_id_text" required="required" class=" form-control col-md-7" />       <!-- hide -->
+            			<input type="text" name="asset_id_text" required="required" class=" form-control col-md-7 hide" />       <!-- hide -->
 
             		</div>
              	<div class="form-group">
@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		</label>
             		<div class="col-md-8">
             			<input type="text" name="assetreturn_name_text" required="required" class="form-control col-md-7" />
-            			<input type="text" name="asset_id_text" required="required" class=" form-control col-md-7" />    <!-- hide -->
+            			<input type="text" name="asset_id_text" required="required" class=" form-control col-md-7 hide" />    <!-- hide -->
 
             		</div>
             	</div>

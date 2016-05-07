@@ -45,6 +45,7 @@ public class BaseDao extends HibernateDaoSupport implements IBaseDao{
 	@Override
 	public <T> T get(Class<T> entry, Serializable id) {
 		try {
+			System.out.println(id);
 			return getHibernateTemplate().get(entry, id);
 		} catch (Exception e) {
 			e.printStackTrace();

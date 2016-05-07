@@ -16,7 +16,7 @@ public class AssetReturnAjax extends BaseAjax {
 	public UserService userService;
 	public AssetService assetService;
 	public String gettime="",returntime="",asset_name="",user_name="";
-	public int id,assetid,userid,status,recipientid,returnerid;
+	public int id,assetid,status,recipientid,returnerid;
 	public User recipient,returner;
 	public Asset asset;
 	
@@ -32,7 +32,7 @@ public class AssetReturnAjax extends BaseAjax {
 	
 	public void init(){
 		gettime=returntime=asset_name=user_name="";
-		id=assetid=userid=status=recipientid=returnerid=0;
+		id=assetid=status=recipientid=returnerid=0;
 	}
 	
 	public String list(){
@@ -82,7 +82,7 @@ public class AssetReturnAjax extends BaseAjax {
 	
 	public String update() {
 		int res = 0;
-		System.out.println(id );
+		System.out.println(id);
 		if(id<=0)
 			res = 2;
 		else{
@@ -172,14 +172,6 @@ public class AssetReturnAjax extends BaseAjax {
 
 	public void setAssetid(int assetid) {
 		this.assetid = assetid;
-	}
-
-	public int getUserid() {
-		return userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
 	}
 
 	public int getStatus() {

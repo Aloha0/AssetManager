@@ -156,7 +156,9 @@
 	
 	<bean id="purchaseAjax" class="com.action.ajax.PurchaseAjax" >
 		<property name="pService" ref="purchaseService"></property>
+		<property name="assetService" ref="assetService"></property>
 	</bean>	
+	
 	<bean id="assetTypeAjax" class="com.action.ajax.AssetTypeAjax" >
 		<property name="typeService" ref="assetTypeService"></property>
 	</bean>	

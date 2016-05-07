@@ -23,7 +23,7 @@ var $table = $('#asset_return_table');
                   }, 
                   {
                       title: '领用人',
-                      field: 'recipient',
+                      field: 'recipient.name',
                       align: 'center',
                       valign: 'middle',
                   }, 
@@ -35,7 +35,7 @@ var $table = $('#asset_return_table');
                   }, 
                   {
                       title: '归还人',
-                      field: 'returner',
+                      field: 'returner.name',
                       align: 'center',
                       valign: 'middle',
                   }, 
@@ -78,7 +78,7 @@ var $table = $('#asset_return_table');
     	var aj = $.ajax({  
     	    url:'../ajaxassetReturn_search_asset',// 跳转到 action  
     	    data:{  
-    	    	asset_name : $searchtext_name,   ///    	    	
+    	    	asset_name : $searchtext_name,    	    	
     	    },  
     	    type:'post',  
     	    cache:false,  
@@ -155,8 +155,8 @@ function ajax_asset_return(){
 	var aj = $.ajax({  
 	    url:'../ajaxassetReturn_update',// 跳转到 action  
 	    data:{  
-	    	asset_id : $asset_id,
-	    	returner_id : $returner_id,
+	    	assetid : $asset_id,
+	    	returnerid : $returner_id,
 	    },  
 	    type:'post',  
 	    cache:false,  

@@ -1,25 +1,24 @@
 package com.action.ajax;
 
+import java.sql.Timestamp;
 import java.util.List;
 
+import com.model.Asset;
 import com.model.AssetType;
 import com.model.Purchase;
 import com.model.PurchaseDetail;
-import com.model.Section;
-import com.model.Setting;
-import com.model.User;
+import com.service.impl.AssetService;
 import com.service.impl.PurchaseService;
-import com.service.impl.SectionService;
-import com.service.impl.SettingService;
-import com.service.impl.UserService;
 
 public class PurchaseAjax extends BaseAjax {
 	private PurchaseService pService;
-	private String[] createResult = {"采购入库成功","创建采购信息失败","采购信息错误"};	
+	private AssetService assetService;
+	private String[] createResult = {"采购入库成功","创建采购信息失败","采购信息错误"};		
+	private String[] updateResult = {"财务入库成功","财务信息错误","系统错误,归还失败"};	
 	
 	public String purpose="",asset_name="",asset_model="",unit="",maker=""
-			,supply="",remark="";
-	public int num,asset_type_id;
+			,supply="",remark="",infinaceNum="";
+	public int num,asset_type_id,asset_id,instore;
 	public float price;
 
 	
@@ -39,8 +38,8 @@ public class PurchaseAjax extends BaseAjax {
 	}
 	
 	public void init(){
-		purpose=asset_name=asset_model=unit=maker=supply=remark="";
-		num=asset_type_id=0;
+		purpose=asset_name=asset_model=unit=maker=supply=remark=infinaceNum="";
+		num=asset_type_id=asset_id=instore=0;
 		price = 0;
 	}
 	
@@ -88,17 +87,24 @@ public class PurchaseAjax extends BaseAjax {
 		return SUCCESS;
 	}
 	
-	
 	public String update() {
-//		Setting tmp = new Setting(setting_name, setting_val, setting_type);
-//		tmp.setId(setting_id);
-//		int res = settingService.update(tmp);
-//		
-//
-//		data = initMap();
-//		data.put("status", res);
-//		data.put("msg", updateResult[res]);
-//		init();
+		System.out.println("财务 : "+asset_id+"  "+instore+"  "+infinaceNum);
+		int res = 0;
+		if(asset_id<=0)
+			res = 2;
+		else{
+			Asset tmp=new Asset();
+			//System.out.println(tmp.getId());
+			tmp=assetService.get(asset_id);
+			tmp.setInstore(instore);
+			tmp.setInfinance(0);
+			tmp.setInfinaceDate(new Timestamp(System.currentTimeMillis()));
+			tmp.setInfinaceNum(infinaceNum);
+			res = assetService.update(tmp);
+		}
+		data = initMap();
+		data.put("status", res);
+		data.put("msg", updateResult[res]);
 		return SUCCESS;
 	}
 	
@@ -112,16 +118,6 @@ public class PurchaseAjax extends BaseAjax {
 //		init();
 
 		return SUCCESS;
-	}
-
-
-	public PurchaseService getpService() {
-		return pService;
-	}
-
-
-	public void setpService(PurchaseService pService) {
-		this.pService = pService;
 	}
 
 
@@ -195,6 +191,16 @@ public class PurchaseAjax extends BaseAjax {
 	}
 
 
+	public String getInfinaceNum() {
+		return infinaceNum;
+	}
+
+
+	public void setInfinaceNum(String infinaceNum) {
+		this.infinaceNum = infinaceNum;
+	}
+
+
 	public int getNum() {
 		return num;
 	}
@@ -215,6 +221,26 @@ public class PurchaseAjax extends BaseAjax {
 	}
 
 
+	public int getAsset_id() {
+		return asset_id;
+	}
+
+
+	public void setAsset_id(int asset_id) {
+		this.asset_id = asset_id;
+	}
+
+
+	public int getInstore() {
+		return instore;
+	}
+
+
+	public void setInstore(int instore) {
+		this.instore = instore;
+	}
+
+
 	public float getPrice() {
 		return price;
 	}
@@ -225,6 +251,24 @@ public class PurchaseAjax extends BaseAjax {
 	}
 
 
+	public PurchaseService getpService() {
+		return pService;
+	}
+
+
+	public void setpService(PurchaseService pService) {
+		this.pService = pService;
+	}
+
+
+	public AssetService getAssetService() {
+		return assetService;
+	}
+
+
+	public void setAssetService(AssetService assetService) {
+		this.assetService = assetService;
+	}
 
 
 }
